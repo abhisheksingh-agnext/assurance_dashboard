@@ -129,10 +129,9 @@ p {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  max-height: 300px;
+  max-height: 160px;
   overflow-y: auto;
   padding-right: 0.25rem;
-  min-height: 100px;
 }
 
 .service-cards::-webkit-scrollbar {
@@ -245,7 +244,7 @@ p {
   flex-shrink: 0;
   cursor: grab;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  margin-right: 40px;
+  margin-right: 20px;
 }
 
 .step-container:hover {
@@ -273,33 +272,12 @@ p {
 }
 
 .flow-actions {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  right: -45px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 3;
-}
-
-.flow-arrow {
-  width: 20px;
-  height: 2px;
-  background: #e2e8f0;
-  margin-right: 8px;
-}
-
-.step-container .add-step-button {
-  position: relative;
-  right: auto;
-  top: auto;
-  transform: none;
-  z-index: 3;
+  display: none;
 }
 
 .add-step-button {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: white;
   cursor: pointer;
@@ -311,24 +289,7 @@ p {
   border: 1px solid rgba(107, 130, 245, 0.3);
   outline: none;
   position: relative;
-  overflow: visible;
-  transition: all 0.2s ease;
-}
-
-.add-step-button .add-icon {
-  font-size: 16px;
-  color: #6b82f5;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: translateY(-1px);
-}
-
-.add-step-button:hover {
-  background: rgba(107, 130, 245, 0.1);
-  border-color: rgba(107, 130, 245, 0.5);
-  transform: translateY(-1px);
+  overflow: hidden;
 }
 
 .add-step-button:focus {
@@ -337,20 +298,38 @@ p {
   border-color: rgba(107, 130, 245, 0.5);
 }
 
+.add-step-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(107, 130, 245, 0.2);
+}
+
+.add-step-button:hover {
+  background: white;
+  border-color: rgba(107, 130, 245, 0.5);
+  transform: translateY(-1px);
+}
+
 .add-step-button:active {
   transform: scale(0.95);
   outline: none;
   border-color: rgba(107, 130, 245, 0.6);
 }
 
-/* Update tooltip positioning for add button */
-.add-step-button::after {
-  right: -8px;
-  transform: translateX(100%) translateY(-50%);
-}
-
-.add-step-button:hover::after {
-  transform: translateX(100%) translateY(-50%);
+.add-step-button .add-icon {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: #6b82f5;
+  line-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  font-weight: 500;
 }
 
 .next-icon {
@@ -461,12 +440,16 @@ p {
   transform: translateX(100%) translateY(-50%);
 }
 
-/* Adjust container margins for all steps */
-.step-container {
-  margin-right: 10px;
+/* Adjust add button position for last step */
+.step-container:last-child .add-step-button {
+  position: absolute;
+  right: -45px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
 }
 
-/* Remove the last-child specific margin */
+/* Adjust container margins to account for shadow */
 .step-container:last-child {
-  margin-right: 10px;
+  margin-right: 40px;
 } 

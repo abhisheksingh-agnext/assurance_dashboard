@@ -34,15 +34,9 @@ const StepWidget = ({
       >
         <div className="step-actions">
           <button
-            className="add-step-button"
-            onClick={onAddStep}
-            title="Add new step"
-          >
-            <span className="add-icon">+</span>
-          </button>
-          <button
             className="delete-step-button"
             onClick={() => onDeleteStep(step.id)}
+        
           >
             <span className="delete-icon">×</span>
           </button>
@@ -109,6 +103,7 @@ const StepWidget = ({
             <p>Drop services here</p>
           </div>
         )}
+           {!isLastStep && (
         <div className="flow-actions">
           <div className="flow-arrow" />
           <button 
@@ -119,6 +114,7 @@ const StepWidget = ({
             <span className="add-icon">+</span>
           </button>
         </div>
+      )}
       </div>
    
     </div>

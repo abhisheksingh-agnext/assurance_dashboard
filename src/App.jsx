@@ -43,8 +43,8 @@ function App() {
       description: 'Quality inspection and verification process'
     },
     { 
-      id: 'labx', 
-      name: 'LabX',
+      id: 'cold_store', 
+      name: 'Cold Store',
       icon: '🧪',
       description: 'Laboratory testing and analysis'
     },
@@ -324,7 +324,7 @@ function App() {
     const newStep = {
       id: Date.now(),
       title: `Stage ${steps.length + 1}`,
-      description: 'Drag services here to configure this step',
+      description: 'Drag services here to configure this stage',
       services: []
     }
     
