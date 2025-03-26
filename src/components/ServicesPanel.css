@@ -1,0 +1,73 @@
+.services-panel {
+  width: 250px;
+  background: #f5f5f5;
+  padding: 1rem;
+  border-right: 1px solid #ddd;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+  z-index: 20;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+}
+
+.services-panel h2 {
+  margin: 0 0 1rem 0;
+  color: #333;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  background: #f5f5f5;
+  padding: 0.5rem 0;
+  z-index: 1;
+}
+
+.services-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  max-height: calc(100vh - 100px);
+}
+
+.services-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.services-list li:hover {
+  background: #f0f0f0;
+  transform: translateY(-1px);
+}
+
+.services-list li.active {
+  background: #e3f2fd;
+  border-color: #2196f3;
+  color: #1976d2;
+}
+
+.services-list li.dragging {
+  opacity: 0.5;
+  background: #f5f5f5;
+}
+
+.service-icon {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 1024px) {
+  .services-panel {
+    width: 200px;
+  }
+} 

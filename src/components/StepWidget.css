@@ -1,0 +1,455 @@
+.steps-grid {
+  display: flex;
+  gap: 0;
+  padding: 1.5rem;
+}
+
+.step-widget {
+  min-width: 280px;
+  max-width: 280px;
+  padding: 1.25rem 3.5rem 1.25rem 1.25rem;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+  height: auto;
+  min-height: 420px;
+  position: relative;
+  clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 50%, calc(100% - 40px) 100%, 0 100%);
+  border: none;
+  margin-right: 20px;
+}
+
+.step-widget::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: white;
+  z-index: -1;
+  clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 50%, calc(100% - 40px) 100%, 0 100%);
+  border: 2px dashed #e2e8f0;
+  border-right: none;
+}
+
+.step-widget:hover {
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.step-widget.empty-step::before {
+  border: 2px dashed #ccc;
+  border-right: none;
+  background: #f9f9f9;
+}
+
+.step-widget.empty-step {
+  background: #f9f9f9;
+}
+
+.step-widget.drag-over::before {
+  border: 2px dashed #4a90e2;
+  border-right: none;
+  background: #f0f7ff;
+}
+
+.step-widget.drag-over {
+  background: #f0f7ff;
+}
+
+.step-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.step-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-title h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  text-align: center;
+}
+
+p {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.edit-icon {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.step-title h3:hover .edit-icon {
+  opacity: 1;
+}
+
+.edit-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.description-input {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.services-container {
+  margin-top: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 0.75rem;
+  flex-grow: 1;
+}
+
+.services-container h4 {
+  margin: 0 0 0.75rem 0;
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.service-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 160px;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+.service-cards::-webkit-scrollbar {
+  width: 4px;
+}
+
+.service-cards::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.service-cards::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.service-cards::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+/* This will be used in ServiceCard.jsx */
+.service-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background-color: white;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  font-size: 0.85rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  cursor: default;
+}
+
+.service-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.service-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.service-name {
+  font-weight: 500;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  line-height: 1.2;
+}
+
+.remove-service {
+  color: #999;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 2px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  background: transparent;
+  border: none;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.remove-service:hover {
+  color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.drop-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+  min-height: 150px;
+  margin-top: 1rem;
+  border: 1px dashed #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}
+
+.drop-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: #60a5fa;
+}
+
+.drop-overlay p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+.step-container {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  position: relative;
+  flex-shrink: 0;
+  cursor: grab;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-right: 20px;
+}
+
+.step-container:hover {
+  transform: translateY(-3px);
+}
+
+.step-container:active {
+  cursor: grabbing;
+}
+
+.step-container.dragging {
+  opacity: 0.5;
+  transform: scale(0.95);
+  z-index: 10;
+}
+
+.step-container.drag-over-left {
+  border-left: 3px solid #6b82f5;
+  padding-left: 8px;
+}
+
+.step-container.drag-over-right {
+  border-right: 3px solid #6b82f5;
+  padding-right: 8px;
+}
+
+.flow-actions {
+  display: none;
+}
+
+.add-step-button {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  border: 1px solid rgba(107, 130, 245, 0.3);
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.add-step-button:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: rgba(107, 130, 245, 0.5);
+}
+
+.add-step-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(107, 130, 245, 0.2);
+}
+
+.add-step-button:hover {
+  background: white;
+  border-color: rgba(107, 130, 245, 0.5);
+  transform: translateY(-1px);
+}
+
+.add-step-button:active {
+  transform: scale(0.95);
+  outline: none;
+  border-color: rgba(107, 130, 245, 0.6);
+}
+
+.add-step-button .add-icon {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: #6b82f5;
+  line-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  font-weight: 500;
+}
+
+.next-icon {
+  width: 30;
+  height: 30;
+  color: #6b82f5;
+  content: none;
+}
+
+[class$="-step-button"]::after {
+  content: attr(title);
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 8px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+[class$="-step-button"]:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(-4px);
+}
+
+.step-widget:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+.step-container.dragging .step-widget {
+  opacity: 0.6;
+  transform: scale(0.98);
+}
+
+/* Step Actions */
+.step-actions {
+  position: absolute;
+  top: 8px;
+  right: 45px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  z-index: 2;
+}
+
+.delete-step-button {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  outline: none;
+  position: relative;
+  overflow: visible;
+  transition: all 0.2s ease;
+}
+
+.delete-step-button .delete-icon {
+  font-size: 16px;
+  color: #ef4444;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-1px);
+}
+
+.delete-step-button:hover {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.5);
+  transform: translateY(-1px);
+}
+
+.delete-step-button:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+.delete-step-button:active {
+  transform: scale(0.95);
+  outline: none;
+  border-color: rgba(239, 68, 68, 0.6);
+}
+
+/* Update tooltip positioning for delete button */
+.delete-step-button::after {
+  right: -8px;
+  transform: translateX(100%) translateY(-50%);
+}
+
+.delete-step-button:hover::after {
+  transform: translateX(100%) translateY(-50%);
+}
+
+/* Adjust add button position for last step */
+.step-container:last-child .add-step-button {
+  position: absolute;
+  right: -45px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+
+/* Adjust container margins to account for shadow */
+.step-container:last-child {
+  margin-right: 40px;
+} 
